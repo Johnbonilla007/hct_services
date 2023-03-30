@@ -1,0 +1,53 @@
+
+### Get Promotions
+GET http://localhost:5000/web-hct/us-central1/app/api/promotion/all
+
+
+### signup
+POST http://localhost:5000/web-hct/us-central1/app/api/auth/signup
+content-Type: application/json
+
+{
+    "username": "hct",
+    "password": "hct2022HCT*",
+    "email": "hct@gmail.com",
+    "name": "hct",
+    "identification_card": "",
+    "phone": "",
+    "city": "San Pedro Sula",
+    "address": "No sé",
+    "company": ""
+}
+
+
+### Add new promotions
+POST http://localhost:5000/web-hct/us-central1/app/api/promotion/news
+content-Type: application/json
+
+{
+    "email": "hct@gmail.com",
+    "password": "hct2022HCT*",
+    "newPromotions": [
+        {
+            "name": "Laptop DELL Windows 10",
+            "description": "Valido hasta 30/OCT",
+            "active": true,
+            "img": "hppt://",
+            "type": "Evento"
+        },
+        {
+            "name": "Laptop HP Windows 11",
+            "description": "Valido hasta 30/OCT",
+            "active": true,
+            "img": "hppt://",
+            "type": "Evento"
+        },
+        {
+            "name": "New",
+            "description": "Valido hasta 30/OCT",
+            "active": true,
+            "img": "hppt://",
+            "type": "Evento"
+        }
+    ]
+}

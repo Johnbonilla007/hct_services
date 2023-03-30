@@ -1,0 +1,54 @@
+POST http://localhost:5000/web-hct/us-central1/app/api/migrate-data
+content-Type: application/json
+https://190.5.105.132:8085/web-hct/us-central1/app/api/migrate-data
+content-Type: application/json
+
+{
+    "email": "hct@gmail.com",
+    "password": "HCT.31hct",
+    "products": [
+        {
+            "name": "PC",
+            "available": true,
+            "brand": "Windows",
+            "condition": "New",
+            "description": "Great!",
+            "features": "",
+            "image": "http://image/test",
+            "price": 100,
+            "quantity_available": 10,
+            "rating": 5,
+            "manufacturerNumber": 101010,
+            "category": "Hardware"
+        }
+    ],
+    "categories": [
+        {
+            "name": "Software",
+            "active": true
+        },
+        {
+            "name": "Hardware",
+            "active": true
+        }
+    ],
+    "carrusels": [
+        {
+            "id": "1",
+            "image": "img update test 0101",
+            "enable": true
+        }
+    ],
+    "promotions": [
+        {
+            "name": "10% de promoción en todos los productos",
+            "img": "img Promocion",
+            "type": "Descuento"
+        },
+        {
+            "name": "100% de promoción en todos los productos",
+            "img": "img Promocion",
+            "type": "Evento"
+        }
+    ]
+}
