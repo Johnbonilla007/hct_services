@@ -6,7 +6,7 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       productId: {
         type: Sequelize.INTEGER,
@@ -14,8 +14,8 @@ module.exports = {
         onDelete: 'CASCADE',
         references: {
           model: 'products',
-          key: 'id'
-        }
+          key: 'id',
+        },
       },
       cityId: {
         type: Sequelize.INTEGER,
@@ -23,23 +23,23 @@ module.exports = {
         onDelete: 'CASCADE',
         references: {
           model: 'Cities',
-          key: 'id'
-        }
+          key: 'id',
+        },
       },
       quality: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
-      }
+        type: Sequelize.DATE,
+      },
     });
   },
   async down(queryInterface, Sequelize) {
     await queryInterface.dropTable('ProductCities');
-  }
+  },
 };

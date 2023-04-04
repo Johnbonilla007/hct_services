@@ -2,9 +2,9 @@ const {
   buildResponse,
   isValidEmail,
   isValidObj,
-} = require("../commons/utilities");
+} = require('../commons/utilities');
 
-const { Affiliate, Quote, QuoteDetail } = require("../infrastructure/models");
+const { Affiliate, Quote, QuoteDetail } = require('../infrastructure/models');
 
 const addUser = async (req, res) => {
   const { address, email, name, phone, city, uid } = req.body;
@@ -13,8 +13,8 @@ const addUser = async (req, res) => {
     if (!isValidEmail(email)) {
       return buildResponse(req, res, 400, {
         success: false,
-        title: "Error",
-        message: "Correo no valido.",
+        title: 'Error',
+        message: 'Correo no valido.',
       });
     }
 
@@ -28,8 +28,8 @@ const addUser = async (req, res) => {
     if (emailExist) {
       buildResponse(req, res, 200, {
         success: false,
-        title: "Advertencia",
-        message: "El correo ya existe",
+        title: 'Advertencia',
+        message: 'El correo ya existe',
       });
 
       return;
@@ -48,15 +48,15 @@ const addUser = async (req, res) => {
 
     buildResponse(req, res, 200, {
       success: true,
-      title: "Confirmación",
-      message: "Ok",
+      title: 'Confirmación',
+      message: 'Ok',
     });
   } catch (error) {
     console.log(error);
     buildResponse(req, res, 500, {
       success: false,
-      title: "error",
-      message: "ocurrio un error",
+      title: 'error',
+      message: 'ocurrio un error',
     });
   }
 };
@@ -77,15 +77,15 @@ const getUserUId = async (req, res) => {
     const response = await Affiliate.findAll({
       where: { uid },
       attributes: [
-        "number_affiliate",
-        "identification_card",
-        "name",
-        "email",
-        "phone",
-        "city",
-        "address",
-        "uid",
-        "company",
+        'number_affiliate',
+        'identification_card',
+        'name',
+        'email',
+        'phone',
+        'city',
+        'address',
+        'uid',
+        'company',
       ],
       // include: {
       //   model: Quote,
@@ -97,16 +97,16 @@ const getUserUId = async (req, res) => {
 
     buildResponse(req, res, 200, {
       success: true,
-      title: "Confirmación",
-      message: "Ok",
+      title: 'Confirmación',
+      message: 'Ok',
       response,
     });
   } catch (error) {
     console.log(error.message);
     buildResponse(req, res, 400, {
       success: false,
-      title: "Error",
-      message: "Ha ocurrido un error al traer la data",
+      title: 'Error',
+      message: 'Ha ocurrido un error al traer la data',
     });
   }
 };
@@ -114,14 +114,14 @@ const getUserUId = async (req, res) => {
 const updateInfotUser = async (req, res) => {
   const { uid, name, address, city, phone } = req.body;
   try {
-    const query = db.collection("affiliate").where("uid", "==", uid);
+    const query = db.collection('affiliate').where('uid', '==', uid);
     const result = await query.get();
     const docs = result.docs;
-    const user = docs.map((doc) => ({
+    const user = docs.map(doc => ({
       id: doc.id,
     }));
 
-    const affiliate = db.collection("affiliate").doc(user[0].id);
+    const affiliate = db.collection('affiliate').doc(user[0].id);
     await affiliate.update({
       name,
       address,
@@ -131,13 +131,13 @@ const updateInfotUser = async (req, res) => {
     });
     buildResponse(req, res, 200, {
       success: true,
-      title: "confirmación",
-      message: "Datos actualizados",
+      title: 'confirmación',
+      message: 'Datos actualizados',
     });
   } catch (error) {
     buildResponse(req, res, 400, {
       success: false,
-      title: "Error",
+      title: 'Error',
       message: error.message,
     });
   }

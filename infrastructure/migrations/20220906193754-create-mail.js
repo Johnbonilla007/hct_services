@@ -6,64 +6,64 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       attempts: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       endTime: {
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       error: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       accepted: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       messageId: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       pending: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       rejected: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       response: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       leaseExpireTime: {
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       startTime: {
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       state: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       messageHTML: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       subject: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       text: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       to: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
-      }
+        type: Sequelize.DATE,
+      },
     });
   },
   async down(queryInterface, Sequelize) {
     await queryInterface.dropTable('Mails');
-  }
+  },
 };

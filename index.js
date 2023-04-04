@@ -1,21 +1,21 @@
-require("dotenv").config();
+require('dotenv').config();
 
-const logger = require("morgan");
-const express = require("express");
-const cors = require("cors");
-const http = require("http");
-const StartupDB = require("./StartupDB");
-const routes = require("./routes");
-const { handleResponse, notFound404 } = require("./commons/middlewares");
+const logger = require('morgan');
+const express = require('express');
+const cors = require('cors');
+const http = require('http');
+const StartupDB = require('./StartupDB');
+const routes = require('./routes');
+const { handleResponse, notFound404 } = require('./commons/middlewares');
 
 const app = express();
 // Log requests to the console.
-app.use(logger("dev"));
+app.use(logger('dev'));
 
 app.use(cors());
 
 //Directorio publico
-app.use(express.static("public"));
+app.use(express.static('public'));
 
 //Lectura y parseo del body
 app.use(express.json()); //las peticiones json se van a procesar aqui
@@ -30,20 +30,20 @@ app.use(handleResponse); // send to response.
 
 // Si la variable PORT no esta definida por default es 5000
 const port = process.env.PORT || 5000;
-app.set("port", port);
+app.set('port', port);
 
 // Crea el server
 const server = http.createServer(app);
 
-server.listen(port, (err) => {
-  if (err) console.log("Error in server setup");
+server.listen(port, err => {
+  if (err) console.log('Error in server setup');
 
   const host = server.address().address;
 
-  if (host == "::")
+  if (host == '::')
     console.log(`http://localhost:${port}${process.env.REACT_APP_apiUrl}`);
 
-  console.log("Server listening on Port", port);
+  console.log('Server listening on Port', port);
 });
 
 // Levanta la bd

@@ -9,13 +9,16 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
 
-  ProductCategory.init({
-    productId: DataTypes.INTEGER,
-    categoryId: DataTypes.INTEGER
-  }, {
-    sequelize,
-    modelName: 'ProductCategory',
-  });
+  ProductCategory.init(
+    {
+      productId: DataTypes.INTEGER,
+      categoryId: DataTypes.INTEGER,
+    },
+    {
+      sequelize,
+      modelName: 'ProductCategory',
+    },
+  );
 
   return ProductCategory;
 };

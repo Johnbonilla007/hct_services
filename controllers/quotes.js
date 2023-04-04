@@ -1,4 +1,4 @@
-const { buildResponse } = require("../commons/utilities");
+const { buildResponse } = require('../commons/utilities');
 
 const { Quote, QuoteDetail } = require('../infrastructure/models');
 
@@ -26,7 +26,7 @@ const addQuote = async (req, res) => {
       image: cart.image,
       subTotal: cart.subTotal,
       total: cart.total || null,
-    }))
+    }));
 
     const newQuote = {
       number_quote: 2,
@@ -38,18 +38,17 @@ const addQuote = async (req, res) => {
       subTotal,
       total,
       uid,
-      QuoteDetails: quoteDetails
-    }
+      QuoteDetails: quoteDetails,
+    };
 
     await Quote.create(newQuote, {
-      include: [QuoteDetail]
+      include: [QuoteDetail],
     });
-
 
     buildResponse(req, res, 200, {
       success: true,
-      title: "Confirmación",
-      message: "Ok",
+      title: 'Confirmación',
+      message: 'Ok',
     });
   } catch (error) {
     console.log(error);
@@ -60,29 +59,28 @@ const addQuote = async (req, res) => {
 const getQuoteUid = async (req, res) => {
   const { uid } = req.params;
   try {
-
     const quotes = await Quote.findAll({
       where: { uid },
-      include: [QuoteDetail]
-    })
+      include: [QuoteDetail],
+    });
 
     if (quotes.length <= 0) {
       return buildResponse(req, res, 400, {
         success: false,
-        message: "No hay resultados",
+        message: 'No hay resultados',
       });
     }
 
     buildResponse(req, res, 200, {
       success: true,
-      message: "OK",
+      message: 'OK',
       response: quotes,
     });
   } catch (error) {
     console.log(error.message);
     buildResponse(req, res, 400, {
       success: false,
-      title: "error",
+      title: 'error',
       message: error.message,
     });
   }

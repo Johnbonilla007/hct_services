@@ -8,9 +8,9 @@ module.exports = {
       name: 'quote_affiliate_association',
       references: {
         table: 'Affiliates',
-        field: 'uid'
-      }
-    })
+        field: 'uid',
+      },
+    });
   },
 
   async down(queryInterface, Sequelize) {
@@ -20,8 +20,8 @@ module.exports = {
       name: 'quote_affiliate_association',
       references: {
         table: 'Affiliates',
-        field: 'uid'
-      }
-    })
-  }
+        field: 'uid',
+      },
+    });
+  },
 };

@@ -8,7 +8,7 @@ module.exports = {
       name: 'affiliate_user_association',
       references: {
         table: 'Users',
-        field: 'uid'
+        field: 'uid',
       },
       onDelete: 'no action',
       onUpdate: 'CASCADE',
@@ -22,10 +22,10 @@ module.exports = {
       name: 'affiliate_user_association',
       references: {
         table: 'Users',
-        field: 'uid'
+        field: 'uid',
       },
       onDelete: 'no action',
       onUpdate: 'CASCADE',
     });
-  }
+  },
 };

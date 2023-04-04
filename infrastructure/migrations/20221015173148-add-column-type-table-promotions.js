@@ -1,14 +1,14 @@
 'use strict';
 
 module.exports = {
-  async up (queryInterface, Sequelize) {
-    await queryInterface.addColumn("Promotions", 'type', {
+  async up(queryInterface, Sequelize) {
+    await queryInterface.addColumn('Promotions', 'type', {
       type: Sequelize.STRING,
-      allowNull: true
+      allowNull: true,
     });
   },
 
-  async down (queryInterface, Sequelize) {
-    await queryInterface.removeColumn("Promotions", 'type');
-  }
+  async down(queryInterface, Sequelize) {
+    await queryInterface.removeColumn('Promotions', 'type');
+  },
 };

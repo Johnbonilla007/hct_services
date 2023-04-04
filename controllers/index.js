@@ -1,4 +1,3 @@
-
 const auth = require('./auth');
 const carrusel = require('./carrusel');
 const category = require('./categories');
@@ -12,15 +11,15 @@ const user = require('./users');
 const wishList = require('./wishList');
 
 module.exports = {
-    auth,
-    carrusel,
-    category,
-    city,
-    migrationHCT,
-    product,
-    promotion,
-    quote,
-    rating,
-    user,
-    wishList
-}
+  auth,
+  carrusel,
+  category,
+  city,
+  migrationHCT,
+  product,
+  promotion,
+  quote,
+  rating,
+  user,
+  wishList,
+};

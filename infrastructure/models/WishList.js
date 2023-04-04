@@ -11,13 +11,16 @@ module.exports = (sequelize, DataTypes) => {
       WishList.belongsTo(models.Product);
     }
   }
-  WishList.init({
-    userId: DataTypes.UUID,
-    productId: DataTypes.INTEGER
-  }, {
-    sequelize,
-    modelName: 'WishList',
-  });
+  WishList.init(
+    {
+      userId: DataTypes.UUID,
+      productId: DataTypes.INTEGER,
+    },
+    {
+      sequelize,
+      modelName: 'WishList',
+    },
+  );
 
   return WishList;
 };

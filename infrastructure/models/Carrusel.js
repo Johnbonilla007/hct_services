@@ -1,7 +1,5 @@
 'use strict';
-const {
-  Model
-} = require('sequelize');
+const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Carrusel extends Model {
     /**
@@ -13,12 +11,15 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   }
-  Carrusel.init({
-    enable: DataTypes.BOOLEAN,
-    image: DataTypes.STRING
-  }, {
-    sequelize,
-    modelName: 'Carrusel',
-  });
+  Carrusel.init(
+    {
+      enable: DataTypes.BOOLEAN,
+      image: DataTypes.STRING,
+    },
+    {
+      sequelize,
+      modelName: 'Carrusel',
+    },
+  );
   return Carrusel;
 };

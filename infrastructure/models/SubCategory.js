@@ -8,14 +8,17 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
 
-  SubCategory.init({
-    categoryId: DataTypes.INTEGER,
-    name: DataTypes.STRING,
-    description: DataTypes.STRING,
-    active: DataTypes.BOOLEAN
-  }, {
-    sequelize,
-    modelName: 'SubCategory',
-  });
+  SubCategory.init(
+    {
+      categoryId: DataTypes.INTEGER,
+      name: DataTypes.STRING,
+      description: DataTypes.STRING,
+      active: DataTypes.BOOLEAN,
+    },
+    {
+      sequelize,
+      modelName: 'SubCategory',
+    },
+  );
   return SubCategory;
 };

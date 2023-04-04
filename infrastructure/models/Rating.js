@@ -7,15 +7,18 @@ module.exports = (sequelize, DataTypes) => {
       Rating.belongsTo(models.Product);
     }
   }
-  Rating.init({
-    id_product: DataTypes.UUID,
-    uid: DataTypes.UUID,
-    email: DataTypes.STRING,
-    vote: DataTypes.DECIMAL,
-    comment: DataTypes.STRING
-  }, {
-    sequelize,
-    modelName: 'Rating',
-  });
+  Rating.init(
+    {
+      id_product: DataTypes.UUID,
+      uid: DataTypes.UUID,
+      email: DataTypes.STRING,
+      vote: DataTypes.DECIMAL,
+      comment: DataTypes.STRING,
+    },
+    {
+      sequelize,
+      modelName: 'Rating',
+    },
+  );
   return Rating;
 };

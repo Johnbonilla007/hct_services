@@ -9,34 +9,37 @@ module.exports = (sequelize, DataTypes) => {
       });
 
       Affiliate.belongsTo(models.User, {
-        foreignKey: 'uid'
+        foreignKey: 'uid',
       });
 
       Affiliate.hasMany(models.WishList, {
         foreignKey: 'userId',
-        sourceKey: 'uid'
+        sourceKey: 'uid',
       });
     }
   }
-  Affiliate.init({
-    number_affiliate: {
-      type: DataTypes.INTEGER,
-      primaryKey: true,
-      autoIncrement: true,
-      allowNull: false
+  Affiliate.init(
+    {
+      number_affiliate: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true,
+        allowNull: false,
+      },
+      identification_card: DataTypes.STRING,
+      name: DataTypes.STRING,
+      email: DataTypes.STRING,
+      phone: DataTypes.STRING,
+      city: DataTypes.STRING,
+      address: DataTypes.STRING,
+      uid: DataTypes.UUID,
+      company: DataTypes.STRING,
     },
-    identification_card: DataTypes.STRING,
-    name: DataTypes.STRING,
-    email: DataTypes.STRING,
-    phone: DataTypes.STRING,
-    city: DataTypes.STRING,
-    address: DataTypes.STRING,
-    uid: DataTypes.UUID,
-    company: DataTypes.STRING
-  }, {
-    sequelize,
-    modelName: 'Affiliate',
-  });
+    {
+      sequelize,
+      modelName: 'Affiliate',
+    },
+  );
 
   return Affiliate;
 };

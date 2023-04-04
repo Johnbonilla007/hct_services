@@ -1,13 +1,13 @@
-const httpCode = require("../commons/httpStatusCode.enum");
+const httpCode = require('../commons/httpStatusCode.enum');
 const {
   isValidObj,
   unrealized,
   isValidArray,
-} = require("../commons/utilities");
-const info = require("../commons/Info.enum");
-const messages = require("../commons/resources/messages");
+} = require('../commons/utilities');
+const info = require('../commons/Info.enum');
+const messages = require('../commons/resources/messages');
 
-const { Affiliate, WishList, Product } = require("../infrastructure/models");
+const { Affiliate, WishList, Product } = require('../infrastructure/models');
 
 const include = [
   {
@@ -50,7 +50,7 @@ const addProductToWishList = async (req, res, next) => {
       userId: affiliate.uid,
       productId: product.id,
     },
-    attributes: ["userId", "productId"],
+    attributes: ['userId', 'productId'],
   });
 
   if (whishList && whishList.length)
@@ -74,7 +74,7 @@ const addProductsToWhisList = async (req, res, next) => {
   if (!userId || !isValidArray(productIds))
     return next({
       code: httpCode.BAD_REQUEST,
-      message: "El campo de usuario y lista de productos es requerido.",
+      message: 'El campo de usuario y lista de productos es requerido.',
     });
 
   const affiliate = await Affiliate.findOne({ where: { uid: userId } });
@@ -85,23 +85,23 @@ const addProductsToWhisList = async (req, res, next) => {
   const wishList = await affiliate.getWishLists({});
 
   const productIdsToCreate = productIds
-    .filter((id) =>
-      isValidArray(wishList) ? !wishList.some((w) => w.productId === id) : true
+    .filter(id =>
+      isValidArray(wishList) ? !wishList.some(w => w.productId === id) : true,
     )
-    .map((id) => ({ userId, productId: id }));
+    .map(id => ({ userId, productId: id }));
 
   if (!isValidArray(productIdsToCreate))
     return next({
       code: httpCode.OK,
       title: info.ADVERTENCIA,
-      message: "Los productos ya están asignados al usuario.",
+      message: 'Los productos ya están asignados al usuario.',
     });
 
   await WishList.bulkCreate(productIdsToCreate);
 
   next({
     code: httpCode.OK,
-    message: "Los productos fueron asignados al usuario.",
+    message: 'Los productos fueron asignados al usuario.',
   });
 };
 
@@ -130,7 +130,7 @@ const getWishListByUser = async (req, res, next) => {
 
   const response = {
     ...item,
-    wishList: WishLists ? WishLists.map((s) => s.Product) : [],
+    wishList: WishLists ? WishLists.map(s => s.Product) : [],
   };
 
   next({ code: httpCode.OK, message: messages.foundData, response });
@@ -144,7 +144,7 @@ const deleteProductToWishList = async (req, res, next) => {
 
   const product = await WishList.findOne({ where: { productId: id } });
 
-  if (!isValidObj(product)) next("");
+  if (!isValidObj(product)) next('');
 
   product.destroy();
 

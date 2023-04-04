@@ -2,13 +2,13 @@
 
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.addColumn("Affiliates", 'company', {
+    await queryInterface.addColumn('Affiliates', 'company', {
       type: Sequelize.STRING,
-      allowNull: true
+      allowNull: true,
     });
   },
 
   async down(queryInterface, Sequelize) {
-    await queryInterface.removeColumn("Affiliates", 'company');
-  }
+    await queryInterface.removeColumn('Affiliates', 'company');
+  },
 };

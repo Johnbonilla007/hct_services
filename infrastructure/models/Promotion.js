@@ -7,16 +7,19 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   }
-  Promotion.init({
-    name: DataTypes.STRING,
-    description: DataTypes.STRING,
-    active: DataTypes.BOOLEAN,
-    img: DataTypes.STRING,
-    type: DataTypes.STRING,
-  }, {
-    sequelize,
-    modelName: 'Promotion',
-  });
+  Promotion.init(
+    {
+      name: DataTypes.STRING,
+      description: DataTypes.STRING,
+      active: DataTypes.BOOLEAN,
+      img: DataTypes.STRING,
+      type: DataTypes.STRING,
+    },
+    {
+      sequelize,
+      modelName: 'Promotion',
+    },
+  );
 
   return Promotion;
 };
