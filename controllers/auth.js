@@ -1,5 +1,5 @@
 const { Op } = require('sequelize');
-const httpCode = require('../commons/HttpStatusCode.enum');
+const httpCode = require('../commons/HttpStatusCode.enum.js');
 const info = require('../commons/Info.enum');
 const messages = require('../commons/resources/messages');
 const {
