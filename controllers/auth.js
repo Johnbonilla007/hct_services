@@ -1,5 +1,5 @@
 const { Op } = require('sequelize');
-const httpCode = require('../commons/HttpStatusCode.enum');
+const httpStatusCode = require('../commons/httpStatusCode');
 const info = require('../commons/Info.enum');
 const messages = require('../commons/resources/messages');
 const {
@@ -11,16 +11,16 @@ const {
 const { User, Affiliate } = require('../infrastructure/models');
 
 const user_pass_required = {
-  code: httpCode.BAD_REQUEST,
+  code: httpStatusCode.BAD_REQUEST,
   message: 'El nombre de usuario y contaseña son requeridos!',
 };
 
 const user_not_exist = {
-  code: httpCode.BAD_REQUEST,
+  code: httpStatusCode.BAD_REQUEST,
   message: messages.userNotExist,
 };
 const invalid_password = {
-  code: httpCode.BAD_REQUEST,
+  code: httpStatusCode.BAD_REQUEST,
   message: messages.invalidPassword,
 };
 
@@ -65,7 +65,7 @@ const signup = async (req, res, next) => {
   const user = await getUserAsync(username, email);
   if (user)
     return next({
-      code: httpCode.OK,
+      code: httpStatusCode.OK,
       title: info.ADVERTENCIA,
       message: messages.existUser,
     });
@@ -95,7 +95,7 @@ const signup = async (req, res, next) => {
   };
 
   next({
-    code: httpCode.OK,
+    code: httpStatusCode.OK,
     message: messages.createdSuccess('Usuario'),
     response,
   });
@@ -111,7 +111,7 @@ const signin = async (req, res, next) => {
 
   if (!comparePassSync(password, user.password))
     return next({
-      code: httpCode.BAD_REQUEST,
+      code: httpStatusCode.BAD_REQUEST,
       message: messages.incorrectPassword,
     });
 
@@ -119,7 +119,7 @@ const signin = async (req, res, next) => {
     uid: user.uid,
   };
 
-  next({ code: httpCode.OK, message: messages.successLogin, response });
+  next({ code: httpStatusCode.OK, message: messages.successLogin, response });
 };
 
 const changePassword = async (req, res, next) => {
@@ -134,7 +134,7 @@ const changePassword = async (req, res, next) => {
 
   if (comparePassSync(password, user.password))
     return next({
-      code: httpCode.BAD_REQUEST,
+      code: httpStatusCode.BAD_REQUEST,
       message: messages.passMatchCurrent,
     });
 
@@ -142,7 +142,10 @@ const changePassword = async (req, res, next) => {
 
   user.update({ password: hash });
 
-  next({ code: httpCode.OK, message: messages.updateSuccess('Contraseña') });
+  next({
+    code: httpStatusCode.OK,
+    message: messages.updateSuccess('Contraseña'),
+  });
 };
 
 module.exports = auth = {

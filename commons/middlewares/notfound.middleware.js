@@ -1,4 +1,4 @@
-const httpCode = require('../HttpStatusCode.enum');
+const httpCode = require('../httpStatusCode');
 
 const notFound404 = (req, res, next) => {
   const error = {

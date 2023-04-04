@@ -1,4 +1,4 @@
-const httpCode = require('../HttpStatusCode.enum');
+const httpCode = require('../httpStatusCode');
 const info = require('../Info.enum');
 
 const handleResponse = (res, request, response, next) => {

@@ -1,4 +1,4 @@
-const httpCode = require('../commons/httpStatusCode.enum');
+const httpCode = require('../commons/httpStatusCode');
 
 const {
   CarruselService,

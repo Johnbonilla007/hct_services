@@ -1,5 +1,5 @@
 const { User } = require('../../infrastructure/models');
-const httpCode = require('../httpStatusCode.enum');
+const httpCode = require('../httpStatusCode');
 const messages = require('../resources/messages');
 const { isValidObj, comparePassSync } = require('../utilities');
 

@@ -1,4 +1,4 @@
-const httpCode = require('../commons/httpStatusCode.enum');
+const httpCode = require('../commons/httpStatusCode');
 const messages = require('../commons/resources/messages');
 const { isValidArray } = require('../commons/utilities');
 const { Carrusel } = require('../infrastructure/models');

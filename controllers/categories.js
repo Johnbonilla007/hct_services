@@ -3,7 +3,7 @@ const {
   isValidObj,
   unrealized,
 } = require('../commons/utilities');
-const httpCode = require('../commons/httpStatusCode.enum');
+const httpCode = require('../commons/httpStatusCode');
 
 const { Category, SubCategory } = require('../infrastructure/models');
 const CategoryService = require('../services/categoryService');
